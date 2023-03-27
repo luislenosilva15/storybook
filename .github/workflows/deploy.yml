@@ -16,13 +16,4 @@ jobs:
         run: yarn
 
       - name: Build Storybook
-        run: build-storybook-docs
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: "./docs-page"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        run: yarn build-storybook -o docs-page
