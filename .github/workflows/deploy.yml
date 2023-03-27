@@ -1,18 +1,26 @@
-name: Build and Publish storybook to GitHub Pages
+name: Deploy Storybook
 
 on:
   push:
     branches:
-      - "master"
+      - master
+
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.build-publish.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - id: build-publish
-        uses: bitovi/github-actions-react-to-ghp@v1.2.0
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: docs-page
-          build_command: npm run build-storybook
+          github_token: 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
+          publish_dir: ./storybook-static
