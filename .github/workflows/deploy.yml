@@ -2,9 +2,6 @@ name: Deploy Storybook
 
 on:
   push:
-    branches:
-      - master
-      - teste
 
 permissions:
   contents: read
