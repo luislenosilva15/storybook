@@ -2,6 +2,7 @@ name: Deploy Storybook
 
 on:
   push:
+    - "*"
 
 permissions:
   contents: read
