@@ -3,13 +3,6 @@ module.exports = {
     "../src/**/*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
-
-  stories: [
-    "./stories1/*.stories.js",
-    "./stories2/*.stories.js",
-    // Add more globs for each Storybook instance
-  ],
-  
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
