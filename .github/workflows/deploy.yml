@@ -27,7 +27,7 @@ jobs:
 
       - name: Rename Storybook directory
         run: |
-          mv storybook-static storybook/${{ github.sha }}
+          mv docs-page storybook/${{ github.sha }}
 
       - name: Commit and push Storybook
         uses: ad-m/github-push-action@v0.6.0
