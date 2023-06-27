@@ -27,7 +27,7 @@ jobs:
             git config --global user.name "luislenosilva15"
             npm install -g gh-pages
             if [ "$CIRCLE_BRANCH" != "gh-pages" ]; then
-              npx gh-pages --branch=gh-pages --dist=storybook/ --dest=. --add
+              npx gh-pages --branch=gh-pages --dist=docs-page/ --dest=. --add
             fi
 
 workflows:
