@@ -6,14 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-        - name: Checkout code
-          uses: actions/checkout@v2
-
-         - name: Install dependencies
-          run: yarn
-
-         - name: Build Storybook
-          run: yarn build-storybook -o docs-page
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Build Storybook
+          command: yarn build-storybook -o docs-page
       - run:
           name: Archive Storybook
           command: |
