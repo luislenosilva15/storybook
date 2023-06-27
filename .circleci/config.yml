@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+         - name: Install dependencies
+          run: yarn
+
+         - name: Build Storybook
+          run: yarn build-storybook -o docs-page
+      - run:
+          name: Archive Storybook
+          command: |
+            mkdir -p storybook-archives/$CIRCLE_PR_NUMBER
+            cp -R storybook/ storybook-archives/$CIRCLE_PR_NUMBER/
