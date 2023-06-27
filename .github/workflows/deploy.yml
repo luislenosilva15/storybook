@@ -23,7 +23,7 @@ jobs:
         run: yarn
 
       - name: Build Storybook
-        run: yarn build-storybook -o docs-page
+        run: yarn build-storybook -o storybook
 
       # - name: Rename Storybook directory
       #   run: |
