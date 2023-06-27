@@ -25,9 +25,9 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook -o docs-page
 
-      - name: Rename Storybook directory
-        run: |
-          mv docs-page storybook/${{ github.sha }}
+      # - name: Rename Storybook directory
+      #   run: |
+      #     mv docs-page storybook/${{ github.sha }}
 
       - name: Commit and push Storybook
         uses: ad-m/github-push-action@v0.6.0
