@@ -16,5 +16,5 @@ jobs:
       - run:
           name: Archive Storybook
           command: |
-            mkdir -p docs-page/$CIRCLE_PR_NUMBER
-            cp -R storybook/ docs-page/$CIRCLE_PR_NUMBER/
+            mkdir -p storybook-archives/$CIRCLE_PR_NUMBER
+            cp -R docs-page/ storybook-archives/$CIRCLE_PR_NUMBER/
