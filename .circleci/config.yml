@@ -22,13 +22,11 @@ jobs:
           command: |
             git config --global user.email "luizleno15@gmail.com"
             git config --global user.name "luislenosilva15"
-            git fetch origin gh-pages
-            git worktree add -B gh-pages-temp origin/gh-pages
+            git clone --branch gh-pages --single-branch git@github.com:luislenosilva15/storybook.git gh-pages-temp
             rm -rf gh-pages-temp/*
-            cp -R storybook-static/. gh-pages-temp/
+            cp -r storybook-static/* gh-pages-temp/
             cd gh-pages-temp
             git add .
             git commit -m "Deploying Storybook to GitHub Pages"
-            git push origin gh-pages-temp:gh-pages
+            git push origin gh-pages
             cd ..
-            git worktree remove gh-pages-temp --force
