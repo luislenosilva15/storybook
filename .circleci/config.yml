@@ -3,22 +3,27 @@ jobs:
   build:
     docker:
       - image: cimg/node:16.20.1
-    resource_class: medium
 
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: yarn
-      - run:
-          name: Build Storybook
-          command: yarn run build-storybook
-      - run:
-          name: Archive Storybook
-          command: |
-            mkdir -p storybook-archives/$CIRCLE_PR_NUMBER
-            cp -R docs-page/ storybook-archives/$CIRCLE_PR_NUMBER/
 
       - run:
-          name: Clone GitHub Pages repository
-          command: bash deploy.sh
+          name: Install Dependencies
+          command: yarn
+
+      - run:
+          name: Build Storybook
+          command: yarn build-storybook
+
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            echo "luislenosilva15.github.io/git@github.com:luislenosilva15/storybook.git" > .circleci/output-dir/url.txt
+            git config --global user.email "luizleno15@gmail.com"
+            git config --global user.name "luislenosilva15"
+            git clone --branch=gh-pages git@github.com:luislenosilva15/storybook.git .deploy_git
+            cp -r storybook-static/. .deploy_git
+            cd .deploy_git
+            git add .
+            git commit -m "Deploy Storybook for $CIRCLE_BRANCH"
+            git push origin gh-pages
