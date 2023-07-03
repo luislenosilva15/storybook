@@ -22,4 +22,5 @@ jobs:
           command: |
             git config --global user.email "luizleno15@gmail.com"
             git config --global user.name "luislenosilva15"
-               npx gh-pages -d storybook-static --branch gh-pages --single-branch
+            git checkout -b deploy-$CIRCLE_SHA1
+            npx gh-pages -d storybook-static --branch deploy-$CIRCLE_SHA1
