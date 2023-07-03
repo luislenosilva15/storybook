@@ -25,7 +25,7 @@ jobs:
             git fetch origin gh-pages
             git worktree add -B gh-pages-temp origin/gh-pages
             rm -rf gh-pages-temp/*
-            cp -r storybook-static/* gh-pages-temp/
+            cp -R storybook-static/. gh-pages-temp/
             cd gh-pages-temp
             git add .
             git commit -m "Deploying Storybook to GitHub Pages"
