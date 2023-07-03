@@ -30,7 +30,7 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
         {user ? (
           <>
             <span className="welcome">
-              Welcome teste, <b>{user.name}</b>!
+              <p>Deu boa</p>
             </span>
             <Button size="small" onClick={onLogout} label="Log out" />
           </>
