@@ -22,4 +22,13 @@ jobs:
           command: |
             git config --global user.email "luizleno15@gmail.com"
             git config --global user.name "luislenosilva15"
-            npx gh-pages -d storybook-static --dest storybook-static/$CIRCLE_SHA1
+            git fetch origin gh-pages
+            git worktree add -B gh-pages-temp origin/gh-pages
+            rm -rf gh-pages-temp/*
+            cp -r storybook-static/* gh-pages-temp/
+            cd gh-pages-temp
+            git add .
+            git commit -m "Deploying Storybook to GitHub Pages"
+            git push origin gh-pages-temp:gh-pages
+            cd ..
+            git worktree remove gh-pages-temp --force
